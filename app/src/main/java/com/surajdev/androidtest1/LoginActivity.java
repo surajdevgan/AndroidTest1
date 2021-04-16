@@ -24,9 +24,13 @@ public class LoginActivity extends AppCompatActivity {
     public void Login(View view) {
 
 
+if(StudentName.getText().toString().isEmpty())
+{
+    Toast.makeText(this, "Name Required", Toast.LENGTH_SHORT).show();
 
+}
 
-        if(UserName.getText().toString().equals("student1") && Password.getText().toString().equals("123456")&& !StudentName.getText().toString().isEmpty())
+      else   if(UserName.getText().toString().equals("student1") && Password.getText().toString().equals("123456")&& !StudentName.getText().toString().isEmpty())
         {
 
 //Create the bundle
