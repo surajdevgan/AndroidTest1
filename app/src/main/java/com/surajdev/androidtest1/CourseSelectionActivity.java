@@ -3,6 +3,7 @@ package com.surajdev.androidtest1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -85,11 +86,9 @@ StudentName.setText("Welcome\n"+venName);
                 }
 
                 else
-                   // grad = false;
-
-
-
+                    grad = false;
                 break;
+
             case R.id.ungrad:
                 if (checked)
                 {
@@ -99,7 +98,7 @@ StudentName.setText("Welcome\n"+venName);
                 }
 
                 else
-                 //   ungrad = false;
+                    ungrad = false;
 
                 break;
 
@@ -139,12 +138,17 @@ StudentName.setText("Welcome\n"+venName);
     public void AddCourse(View view) {
 
         checkhours+= tmphhr;
-
+        Log.e("checkinghhvalue",""+checkhours);
 
         if(grad && checkhours<=21)
         {
+
             totalfee += tmpff;
+            Log.e("ttlfees",""+totalfee);
+
             totalhhr += tmphhr;
+            Log.e("ttlhhr",""+totalhhr);
+
             checkhours = totalhhr;
             TotalFeesToDisplay.setText("Your Total Fees is $ "+totalfee);
             TotalHoursToDisplay.setText("Your Total hours "+totalhhr);
@@ -152,11 +156,13 @@ StudentName.setText("Welcome\n"+venName);
         }
 
 
-         if(ungrad & checkhours<=19)
+       else   if(ungrad && checkhours<=19)
         {
 
             totalfee += tmpff;
+            Log.e("ttlfees",""+totalfee);
             totalhhr += tmphhr;
+            Log.e("ttlhhr",""+totalhhr);
             checkhours = totalhhr;
 
             TotalFeesToDisplay.setText("Your Total Fees is $ "+totalfee);
@@ -168,6 +174,7 @@ StudentName.setText("Welcome\n"+venName);
 
             Toast.makeText(this, "You can’t add this course", Toast.LENGTH_SHORT).show();
             checkhours = totalhhr;
+            Log.e("checkhours",""+checkhours);
         }
 
 
@@ -226,6 +233,7 @@ StudentName.setText("Welcome\n"+venName);
        // FinalFees.setVisibility(View.VISIBLE);
        // TotalFeesToDisplay.setText(""+totalfee);
         FinalFees.setText("Your Fees after Add-dns is "+totalfee);
+        Log.e("finalvalue",""+totalfee);
 
     }
 
