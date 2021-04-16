@@ -18,6 +18,7 @@ public class CourseSelectionActivity extends AppCompatActivity implements Adapte
 
     TextView StudentName, FeesToDisplay, HoursToDisplay, TotalFeesToDisplay, TotalHoursToDisplay, FinalFees;
     Spinner CourseSpinner;
+    CheckBox cb1, cb2;
 
     public static String[] courses = {"Java", "Swift", "Android", "iOS", "Database"};
     public static int[] fees = {1300, 1500, 1400, 1350, 1000};
@@ -45,6 +46,8 @@ public class CourseSelectionActivity extends AppCompatActivity implements Adapte
         StudentName = findViewById(R.id.StudentNAme);
         CourseSpinner = findViewById(R.id.courses);
         FeesToDisplay = findViewById(R.id.fees);
+        cb1 = findViewById(R.id.accom);
+        cb2 = findViewById(R.id.medical);
         HoursToDisplay = findViewById(R.id.hours);
         TotalFeesToDisplay = findViewById(R.id.totalfees);
         TotalHoursToDisplay = findViewById(R.id.totalhours);
@@ -142,18 +145,19 @@ StudentName.setText("Welcome\n"+venName);
         {
             totalfee += tmpff;
             totalhhr += tmphhr;
-
+            checkhours = totalhhr;
             TotalFeesToDisplay.setText("Your Total Fees is $ "+totalfee);
             TotalHoursToDisplay.setText("Your Total hours "+totalhhr);
 
         }
 
 
-         if(ungrad && checkhours<=19)
+         if(ungrad & checkhours<=19)
         {
 
             totalfee += tmpff;
             totalhhr += tmphhr;
+            checkhours = totalhhr;
 
             TotalFeesToDisplay.setText("Your Total Fees is $ "+totalfee);
             TotalHoursToDisplay.setText("Your Total hours "+totalhhr);
@@ -222,6 +226,33 @@ StudentName.setText("Welcome\n"+venName);
        // FinalFees.setVisibility(View.VISIBLE);
        // TotalFeesToDisplay.setText(""+totalfee);
         FinalFees.setText("Your Fees after Add-dns is "+totalfee);
+
+    }
+
+    public void Clear(View view) {
+        FinalFees.setText("");
+        TotalHoursToDisplay.setText("");
+        TotalFeesToDisplay.setText("");
+        HoursToDisplay.setText("");
+        FeesToDisplay.setText("");
+        checkhours=0;
+         originalFees=0;
+         originalHours=0;
+        grad = false;
+       ungrad = true;
+
+         totalfee = 0;
+         tmpff = 0;
+
+         totalhhr = 0;
+         tmphhr = 0;
+         checkhours = 0;
+         cb1.setChecked(false);
+         cb2.setChecked(false);
+
+
+
+
 
     }
 }
