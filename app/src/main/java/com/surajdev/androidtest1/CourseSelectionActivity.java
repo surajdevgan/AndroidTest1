@@ -75,18 +75,28 @@ StudentName.setText("Welcome\n"+venName);
         switch(view.getId()) {
             case R.id.grad:
                 if (checked)
+                {
                     grad = true;
+                    ungrad = false;
+
+                }
+
                 else
-                    grad = false;
+                   // grad = false;
 
 
 
                 break;
             case R.id.ungrad:
                 if (checked)
-               ungrad = true;
+                {
+                    ungrad = true;
+                    grad = false;
+
+                }
+
                 else
-                    ungrad = false;
+                 //   ungrad = false;
 
                 break;
 
@@ -128,8 +138,20 @@ StudentName.setText("Welcome\n"+venName);
         checkhours+= tmphhr;
 
 
-        if(grad && checkhours<21 || ungrad && checkhours<19)
+        if(grad && checkhours<=21)
         {
+            totalfee += tmpff;
+            totalhhr += tmphhr;
+
+            TotalFeesToDisplay.setText("Your Total Fees is $ "+totalfee);
+            TotalHoursToDisplay.setText("Your Total hours "+totalhhr);
+
+        }
+
+
+         if(ungrad && checkhours<=19)
+        {
+
             totalfee += tmpff;
             totalhhr += tmphhr;
 
@@ -141,6 +163,7 @@ StudentName.setText("Welcome\n"+venName);
         else {
 
             Toast.makeText(this, "You can’t add this course", Toast.LENGTH_SHORT).show();
+            checkhours = totalhhr;
         }
 
 
